@@ -8,7 +8,6 @@ export const register = async (userData) => {
     const response = await axios.post(`${API_URL}/register`, userData);
     return response.data;
   } catch (error) {
-    console.error("Sign up Error => ", error);
-    console.error("Error detail => ", error.response.data);
+    alert(error.response.data.message);
   }
 };
