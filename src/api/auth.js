@@ -11,3 +11,13 @@ export const register = async (userData) => {
     alert(error.response.data.message);
   }
 };
+
+// 로그인 로직
+export const login = async (userData) => {
+  try {
+    const response = await axios.post(`${API_URL}/login`, userData);
+    return response.data;
+  } catch (error) {
+    alert(error.login.data.message);
+  }
+};
