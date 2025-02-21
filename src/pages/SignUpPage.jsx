@@ -36,8 +36,8 @@ const SignUpPage = () => {
       const response = await register(userData);
 
       if (response) {
-        alert("회원가입 성공");
-        navigate("/");
+        alert("회원가입 성공, 로그인 해보세요.");
+        navigate("/login");
       }
     } catch (error) {
       console.error("회원가입 실패: ", error);
