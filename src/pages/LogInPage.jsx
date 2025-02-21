@@ -1,8 +1,10 @@
 // LogInPage.jsx
 import { useState } from "react";
 import { login } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,9 +17,10 @@ const LoginPage = () => {
 
       if (loginResponse) {
         alert("로그인 성공");
+        navigate("/");
       }
     } catch (error) {
-      alert("로그인 실패");
+      alert("아이디와 비밀번호가 올바른지 확인하세요.");
     }
   };
 
