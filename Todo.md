@@ -26,17 +26,18 @@
   - [v] log in 성공 시 홈화면으로 이동
   - [v] 회원가입 완료 시 로그인 화면으로 이동
 
-- Layout 컴포넌트(Header, Dashboard)
-
-  - [ ] 고정적인 Header 생성
-  - [ ] 미로그인 시 Header에 Login, Sign up 버튼 추가
-  - [ ] 로그인 시 Header에 Logout, Profile 버튼 추가
-  - [ ] 고정적인 dashboard 생성
-  - [ ] dashboard에 navigation 추가(테스트 페이지, 프로필 페이지)
-
 ---
 
 02-22 (토)
+
+- Layout 컴포넌트(Header, Dashboard)
+
+  - [v] 고정적인 Header 생성
+  - [v] Header에 Login, Sign up 버튼 추가
+  - [v] 고정적인 dashboard 생성
+  - [v] dashboard에 navigation 추가(테스트 페이지, 프로필 페이지)
+  - [v] ProtectedRoute 구현하여 비로그인자 접근 제한
+  - [v] 테스트 페이지와 결과 페이지 보호
 
 - 프로필 컴포넌트 작성
 
@@ -44,6 +45,7 @@
   - [ ] auth에 프로필 확인 기능 작성
   - [ ] 프로필로 들어가면 서버에서 get
   - [ ] 프로필 수정 버튼 생성, 라우터 연결
+  - [ ] ProtectedRoute 보호에 추가
 
 - 프로필 수정 컴포넌트 작성
 
@@ -51,15 +53,24 @@
   - [ ] auth에 프로필 수정 기능 작성
   - [ ] 닉네임 변경 기능
   - [ ] 프로필 수정 완료 클릭 시 서버에 patch
-
-- 테스트 문항 작성
-  - [ ] questions.js 파일 생성
-  - [ ] MBTI를 골라낼 수 있는 질문 작성(20개?)
-  - [ ] calculateMBTI
+  - [ ] ProtectedRoute 보호에 추가
 
 ---
 
 02-23 (일)
+
+- 테스트 문항 작성
+
+  - [ ] questions.js 파일 생성
+  - [ ] MBTI를 골라낼 수 있는 질문 작성(20개?)
+  - [ ] calculateMBTI
+
+- 테스트 결과 확인
+
+- 로그아웃 기능 구현
+
+  - [ ] auth에 로그아웃 기능 작성
+  - [ ] 로그인 상태에서 Header에 Log out 뜨도록 변경
 
 - alert를 Toast로 변경
   - [ ] 회원가입 페이지 내 예외처리 알림
