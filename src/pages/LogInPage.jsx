@@ -15,7 +15,7 @@ const LoginPage = () => {
       const userData = { id, password };
       const loginResponse = await login(userData);
 
-      if (loginResponse) {
+      if (loginResponse && loginResponse.accessToken) {
         alert("로그인 성공");
         navigate("/");
       }
