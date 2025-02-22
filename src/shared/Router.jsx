@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import SignUpPage from "../pages/SignUpPage";
 import TestPage from "../pages/TestPage";
-import TestResultPage from "../pages/TestResultPage";
-import LogInPage from "../pages/LoginPage";
 import MainPage from "../pages/MainPage";
+import LogInPage from "../pages/LoginPage";
+import SignUpPage from "../pages/SignUpPage";
 import ProtectedRoute from "./ProtectedRoute";
+import ProfilePage from "../pages/ProfilePage";
+import TestResultPage from "../pages/TestResultPage";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/result" element={<TestResultPage />} />
           </Route>
