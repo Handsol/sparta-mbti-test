@@ -14,7 +14,11 @@ const ProfileEditPage = () => {
     // 수정할 프로필 내용을 FormData로 포장해서 auth.js로 전송
     const formData = new FormData();
     formData.append("nickname", newNickname);
-    formData.append("avatar", newAvatar);
+
+    // 변경할 프로필 사진을 올렸을때만 FormData로 전송
+    if (newAvatar) {
+      formData.append("avatar", newAvatar);
+    }
     const response = await updateProfile(formData);
 
     // 프로필 수정 시 바로 적용되도록 로직 추가
@@ -52,6 +56,7 @@ const ProfileEditPage = () => {
         onChange={(e) => setNewNickname(e.target.value)}
       />
       <button onClick={updateProfileHandler}>Save Changes</button>
+      <button onClick={() => navigate("/profile")}>My Profile</button>
     </div>
   );
 };
