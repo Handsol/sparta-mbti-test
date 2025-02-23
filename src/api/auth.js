@@ -18,11 +18,8 @@ export const login = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/login`, userData);
 
-    // 로그인하면 토큰을 로컬 스토리지에 저장
+    // 로그인 시 정보를 zustand에 전송
     if (response.data.accessToken) {
-      // localStorage.setItem("accessToken", response.data.accessToken);
-
-      // 로그인 정보를 zustand에 저장
       useAuthStore
         .getState()
         .setUserLogin(
