@@ -7,6 +7,7 @@ import SignUpPage from "../pages/SignUpPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ProfilePage from "../pages/ProfilePage";
 import TestResultPage from "../pages/TestResultPage";
+import ProfileEditPage from "../pages/ProfileEditPage";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
           <Route path="/login" element={<LogInPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/editprofile" element={<ProfileEditPage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/result" element={<TestResultPage />} />
           </Route>

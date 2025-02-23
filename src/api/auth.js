@@ -35,9 +35,29 @@ export const login = async (userData) => {
   }
 };
 
-//로그아웃 로직
+// 로그아웃 로직
 export const logout = () => {
   // zustand 초기화
   useAuthStore.getState().setUserLogout();
   window.location.href = "/";
+};
+
+// 프로필 수정 로직
+export const updateProfile = async (formData) => {
+  console.log(formData);
+  const accessToken = localStorage.getItem("accessToken");
+
+  if (accessToken) {
+    try {
+      const response = await axios.patch(`${API_URL}/profile`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  }
 };
