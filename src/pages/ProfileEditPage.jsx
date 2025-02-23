@@ -17,11 +17,14 @@ const ProfileEditPage = () => {
     formData.append("avatar", newAvatar);
     const response = await updateProfile(formData);
 
+    // 프로필 수정 시 바로 적용되도록 로직 추가
     if (response.success) {
       useAuthStore.setState({
         avatar: response.avatar,
         nickname: response.nickname,
       });
+      alert("프로필이 성공적으로 변경되었습니다.");
+      navigate("/profile");
     }
   };
 
