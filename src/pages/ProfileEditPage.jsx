@@ -15,7 +15,14 @@ const ProfileEditPage = () => {
     const formData = new FormData();
     formData.append("nickname", newNickname);
     formData.append("avatar", newAvatar);
-    await updateProfile(formData);
+    const response = await updateProfile(formData);
+
+    if (response.success) {
+      useAuthStore.setState({
+        avatar: response.avatar,
+        nickname: response.nickname,
+      });
+    }
   };
 
   return (
