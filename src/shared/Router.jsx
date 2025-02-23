@@ -19,7 +19,7 @@ const Router = () => {
           <Route path="/login" element={<LogInPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/profile-edit" element={<ProfileEditPage />} />
+            <Route path="/editprofile" element={<ProfileEditPage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/result" element={<TestResultPage />} />
           </Route>
