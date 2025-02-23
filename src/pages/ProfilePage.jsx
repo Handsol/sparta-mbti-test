@@ -11,6 +11,8 @@ const ProfilePage = () => {
       <img
         src={avatar ? avatar : "/images/default-profile.png"}
         alt="Profile"
+        width="150"
+        height="150"
       />
       <p>Nickname : {nickname || "닉네임을 정하지 않았습니다."}</p>
       <button onClick={() => navigate("/editprofile")}>Edit Profile</button>
