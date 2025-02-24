@@ -1,43 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI } from "../utils/mbtiCalculator";
 import { createTestResult, getTestResults } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
-import { getUserProfile } from "../api/auth";
-import { useEffect } from "react";
+import useAuthStore from "../zustand/bearsStore";
 
 const TestPage = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // 로컬스토리지에 저장된 유저 정보 가져오기
-    const fetchUserData = async () => {
-      const currentToken = localStorage.getItem("accessToken");
-      const userData = await getUserProfile(currentToken);
-
-      setUser(userData.data);
-    };
-
-    fetchUserData();
-  }, []);
+  const { nickname, userId } = useAuthStore((state) => state);
 
   // 테스트 결과에 랜덤한 아이디를 부여해서 생성
   const handleTestSubmit = async (answers) => {
+    if (!nickname || !userId) {
+      alert("접속된 계정이 없음");
+      return;
+    }
     const mbtiResult = calculateMBTI(answers);
+
+    console.log(nickname, userId);
 
     const newTestResult = {
       id: crypto.randomUUID(),
-      nickname: user?.nickname,
+      nickname: nickname,
       result: mbtiResult,
       date: Date.now(),
-      userId: user.id,
+      userId: userId,
     };
 
     //예외처리
     const testResults = await getTestResults();
-    if (testResults.some((result) => result.userId === user.id)) {
+    if (testResults.some((result) => result.userId === userId)) {
       alert("결과가 이미 존재합니다. 결과 페이지로 이동합니다.");
       return navigate(`/result`);
     }
@@ -51,6 +44,8 @@ const TestPage = () => {
       console.error("테스트 전송 실패 : ", error);
       alert("테스트 결과 전송에 실패하였습니다. 다시 시도해주세요.");
     }
+
+    console.log(testResults);
   };
 
   return (
