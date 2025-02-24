@@ -28,7 +28,7 @@ const TestForm = ({ onSubmit }) => {
   console.log(questions);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-lg">
+    <form onSubmit={handleSubmit} className=" w-full p-3 bg-white rounded-lg">
       {questions.map((q, index) => (
         <div key={q.id} className="mb-6">
           <p className="font-semibold text-lg mb-3">{q.question}</p>
