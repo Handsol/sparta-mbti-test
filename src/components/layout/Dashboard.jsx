@@ -12,7 +12,7 @@ const Dashboard = ({ children }) => {
         <button onClick={() => navigate("/result")}>My Result</button>
         <button onClick={() => navigate("/profile")}>My Profile</button>
       </div>
-      <div className="flex justify-between items-center h-[650px] w-full max-w-[700px] min-w-[244px] mx-auto bg-gray-100 rounded-lg">
+      <div className="flex justify-between h-[650px] w-full max-w-[700px] min-w-[244px] mx-auto bg-gray-100 rounded-lg overflow-auto">
         {test ? <MainPage /> : children}
       </div>
     </div>
