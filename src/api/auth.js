@@ -42,6 +42,22 @@ export const logout = () => {
   window.location.href = "/";
 };
 
+// 프로필 확인 로직
+export const getUserProfile = async (token) => {
+  const response = await fetch("https://yourapi.com/user", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`, // 헤더에 토큰을 포함시켜 유저 정보 요청
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("유저 정보를 가져오는데 실패했습니다.");
+  }
+
+  return await response.json(); // 유저 정보를 반환
+};
+
 // 프로필 수정 로직
 export const updateProfile = async (formData) => {
   console.log(formData);

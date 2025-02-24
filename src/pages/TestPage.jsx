@@ -1,53 +1,73 @@
 import { useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI } from "../utils/mbtiCalculator";
-import { createTestResult } from "../api/testResults";
-import { updateTestResultVisibility } from "../api/testResults";
+import { createTestResult, getTestResults } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
-import { questions } from "../data/question";
+import { getUserProfile } from "../api/auth";
+import { useEffect } from "react";
 
-const TestPage = ({ user }) => {
+const TestPage = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
-  const [visibility, setVisibility] = useState(false);
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    // 로컬스토리지에 저장된 유저 정보 가져오기
+    const fetchUserData = async () => {
+      const currentToken = localStorage.getItem("accessToken");
+      const userData = await getUserProfile(currentToken);
+
+      setUser(userData.data);
+    };
+
+    fetchUserData();
+  }, []);
+
+  // 테스트 결과에 랜덤한 아이디를 부여해서 생성
   const handleTestSubmit = async (answers) => {
+    const mbtiResult = calculateMBTI(answers);
+
+    const newTestResult = {
+      id: crypto.randomUUID(),
+      nickname: user?.nickname,
+      result: mbtiResult,
+      date: Date.now(),
+      userId: user.id,
+    };
+
+    //예외처리
+    const testResults = await getTestResults();
+    if (testResults.some((result) => result.userId === user.id)) {
+      alert("결과가 이미 존재합니다. 결과 페이지로 이동합니다.");
+      return navigate(`/result`);
+    }
+
     try {
-      // 선택된 답을 바탕으로 MBTI 결과 계산
-      const mbtiResult = calculateMBTI(answers);
-
-      // 서버에 테스트 결과 저장 (createTestResult)
-      const resultData = await createTestResult({
-        user: { id: user.id, nickname: user.nickname },
-        result: mbtiResult,
-      });
-
-      // 결과를 상태로 업데이트
-      setResult(mbtiResult);
-
-      // 테스트 결과 공개 여부를 true로 업데이트 (결과가 보이게 설정)
-      await updateTestResultVisibility(resultData.id, true);
-      setVisibility(true);
+      const data = await createTestResult(newTestResult);
+      if (data) {
+        setResult(data.result);
+      }
     } catch (error) {
-      console.error("테스트 결과 생성 중 오류 발생: ", error);
+      console.error("테스트 전송 실패 : ", error);
+      alert("테스트 결과 전송에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">MBTI 테스트</h1>
-      <TestForm questions={questions} onSubmit={handleTestSubmit} />
-      {visibility && result && (
-        <div>
-          <h2 className="text-2xl mt-6">결과: {result}</h2>
-          <button
-            onClick={() => navigate("/result")}
-            className="mt-6 w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
-          >
-            결과 자세히 보기
-          </button>
+    <div className="w-full flex flex-col items-center justify-center bg-white">
+      <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full overflow-auto">
+        <div className=" bg-white z-10 w-full mb-4">
+          <h1 className="text-3xl font-bold text-primary-color mb-6">
+            MBTI 테스트
+          </h1>
+          <TestForm onSubmit={handleTestSubmit} />
+          <div className="mt-4">
+            <label className="mr-2">결과 공개:</label>
+            <input type="checkbox" />
+          </div>
         </div>
-      )}
+        <div className="overflow-y-auto h-[calc(100vh-200px)]"> </div>
+      </div>
     </div>
   );
 };

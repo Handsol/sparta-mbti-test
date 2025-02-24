@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { questions } from "../data/question";
 
-const TestForm = ({ questions, onSubmit }) => {
+const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
@@ -13,8 +14,18 @@ const TestForm = ({ questions, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //예외처리: 아무 답변도 하지 않거나 빼먹었고 확인버튼 누를 떄
+    const isBlank = answers.some((answer) => !answer.answer);
+    if (isBlank) {
+      alert("테스트를 모두 완료해주세요!");
+      return;
+    }
+
     onSubmit(answers);
   };
+
+  console.log(questions);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-lg">
