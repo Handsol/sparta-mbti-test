@@ -18,8 +18,6 @@ const TestPage = () => {
     }
     const mbtiResult = calculateMBTI(answers);
 
-    console.log(nickname, userId);
-
     const newTestResult = {
       id: crypto.randomUUID(),
       nickname: nickname,
@@ -44,8 +42,6 @@ const TestPage = () => {
       console.error("테스트 전송 실패 : ", error);
       alert("테스트 결과 전송에 실패하였습니다. 다시 시도해주세요.");
     }
-
-    console.log(testResults);
   };
 
   return (
@@ -56,9 +52,11 @@ const TestPage = () => {
             MBTI 테스트
           </h1>
           <TestForm onSubmit={handleTestSubmit} />
-          <div className="mt-4">
-            <label className="mr-2">결과 공개:</label>
-            <input type="checkbox" />
+          <div className="mt-4 flex flex-col items-center gap-3">
+            <label className="mr-2">
+              당신의 MBTI는... {result ? result : "테스트를 진행해주세요"}
+            </label>
+            <button onClick={() => navigate("/result")}>자세히 보기</button>
           </div>
         </div>
         <div className="overflow-y-auto h-[calc(100vh-200px)]"> </div>
