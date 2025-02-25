@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getTestResults } from "../api/testResults";
+import { deleteTestResult, getTestResults } from "../api/testResults";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import useAuthStore from "../zustand/bearsStore";
 
@@ -29,6 +29,17 @@ const TestResultPage = () => {
     fetchTestResult();
   }, [userId, navigate]);
 
+  const handleRetryTest = async () => {
+    try {
+      await deleteTestResult(result.id);
+      alert("기존 결과가 삭제되었습니다. 다시 테스트를 진행해주세요.");
+      navigate("/");
+    } catch (error) {
+      console.error("결과를 삭제하지 못함 : ", error);
+      alert("결과를 삭제하지 못했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center bg-white">
       <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full overflow-auto">
@@ -43,7 +54,7 @@ const TestResultPage = () => {
         ) : (
           <p>테스트를 진행해주세요!</p>
         )}
-        <button onClick={() => navigate("/")}>다시 테스트하기</button>
+        <button onClick={handleRetryTest}>다시 테스트하기</button>
       </div>
     </div>
   );
