@@ -46,48 +46,55 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up</h1>
-      <form onSubmit={signUpHandler}>
-        <input
-          type="text"
-          name="id"
-          placeholder="Insert your ID"
-          value={id}
-          onChange={(e) => {
-            setId(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          name="nickname"
-          placeholder="Insert your Name"
-          value={nickname}
-          onChange={(e) => {
-            setNickname(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Insert your password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          name="checkPassword"
-          placeholder="Check your password"
-          value={checkPw}
-          onChange={(e) => {
-            setCheckPw(e.target.value);
-          }}
-        />
+    <div className="h-[650px] w-full max-w-[700px] min-w-[244px] flex flex-col items-center justify-center bg-white">
+      <div className="bg-blue-50 rounded-lg p-6 shadow-md w-[90%] max-w-[500px] text-center border border-blue-200">
+        <h1 className="text-3xl font-bold text-blue-800 mb-6">Sign up</h1>
 
-        <button type="submit">Sign up</button>
-      </form>
+        <form onSubmit={signUpHandler} className="space-y-4">
+          <input
+            type="text"
+            name="id"
+            placeholder="Insert your ID"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <input
+            type="text"
+            name="nickname"
+            placeholder="Insert your Name"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Insert your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <input
+            type="password"
+            name="checkPassword"
+            placeholder="Check your password"
+            value={checkPw}
+            onChange={(e) => setCheckPw(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <button
+            type="submit"
+            className="w-full py-1 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+          >
+            Sign up
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
