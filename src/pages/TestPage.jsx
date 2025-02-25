@@ -46,21 +46,26 @@ const TestPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-white">
-      <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full overflow-auto">
-        <div className=" bg-white z-10 w-full mb-4">
-          <h1 className="text-3xl font-bold text-primary-color mb-6">
-            MBTI 테스트
-          </h1>
+    <div className="w-full flex flex-col items-center justify-center bg-blue-50">
+      <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full border border-blue-200 shadow-md overflow-y-auto scrollbar-hidden">
+        <div className="bg-white z-10 w-full mb-4">
+          <h1 className="text-3xl font-bold text-blue-800 mb-6">MBTI 테스트</h1>
           <TestForm onSubmit={handleTestSubmit} />
           <div className="mt-4 flex flex-col items-center gap-3">
             <label className="mr-2">
               당신의 MBTI는... {result ? result : "테스트를 진행해주세요"}
             </label>
-            <button onClick={() => navigate("/result")}>자세히 보기</button>
+            <button
+              onClick={() => navigate("/result")}
+              className="bg-blue-200 text-blue-800 py-2 px-6 rounded-lg border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+            >
+              자세히 보기
+            </button>
           </div>
         </div>
-        <div className="overflow-y-auto h-[calc(100vh-200px)]"> </div>
+        <div className="overflow-y-auto h-[calc(100vh-200px)] scrollbar-hidden">
+          {" "}
+        </div>
       </div>
     </div>
   );

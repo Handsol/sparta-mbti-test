@@ -28,17 +28,22 @@ const TestForm = ({ onSubmit }) => {
   console.log(questions);
 
   return (
-    <form onSubmit={handleSubmit} className=" w-full p-3 bg-white rounded-lg">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full p-6 bg-white rounded-lg border border-blue-200 shadow-md"
+    >
       {questions.map((q, index) => (
         <div key={q.id} className="mb-6">
-          <p className="font-semibold text-lg mb-3">{q.question}</p>
+          <p className="font-semibold text-lg text-blue-800 mb-3">
+            {q.question}
+          </p>
           <div className="space-y-2">
             {q.options.map((option, i) => (
               <label
                 key={i}
-                className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === option ? "bg-gray-100" : ""
-                } hover:bg-gray-100`}
+                className={`block p-3 border border-blue-300 rounded-lg cursor-pointer transition-colors duration-300 ${
+                  answers[index]?.answer === option ? "bg-blue-200" : "bg-white"
+                } hover:bg-blue-200`}
               >
                 <input
                   type="radio"
@@ -46,7 +51,7 @@ const TestForm = ({ onSubmit }) => {
                   value={option}
                   checked={answers[index]?.answer === option}
                   onChange={() => handleChange(index, option)}
-                  className="mr-2 text-primary-color"
+                  className="mr-2 accent-blue-600"
                 />
                 {option}
               </label>
@@ -54,7 +59,13 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </div>
       ))}
-      <button type="submit">제출하기</button>
+
+      <button
+        type="submit"
+        className="w-full py-1 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+      >
+        제출하기
+      </button>
     </form>
   );
 };
