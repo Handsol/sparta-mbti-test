@@ -30,13 +30,19 @@ const TestResultPage = () => {
   }, [userId, navigate]);
 
   const handleRetryTest = async () => {
-    try {
-      await deleteTestResult(result.id);
-      alert("기존 결과가 삭제되었습니다. 다시 테스트를 진행해주세요.");
-      navigate("/");
-    } catch (error) {
-      console.error("결과를 삭제하지 못함 : ", error);
-      alert("결과를 삭제하지 못했습니다. 다시 시도해주세요.");
+    const confirmDelete = window.confirm(
+      "다시 테스트를 하기 위해 기존 결과를 삭제하시겠습니까?"
+    );
+
+    if (confirmDelete) {
+      try {
+        await deleteTestResult(result.id);
+        alert("기존 결과가 삭제되었습니다. 다시 테스트를 진행해주세요.");
+        navigate("/");
+      } catch (error) {
+        console.error("결과를 삭제하지 못함 : ", error);
+        alert("결과를 삭제하지 못했습니다. 다시 시도해주세요.");
+      }
     }
   };
 
