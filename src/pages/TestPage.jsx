@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI } from "../utils/mbtiCalculator";
 import { createTestResult, getTestResults } from "../api/testResults";
@@ -37,6 +37,7 @@ const TestPage = () => {
       const data = await createTestResult(newTestResult);
       if (data) {
         setResult(data.result);
+        alert("테스트가 완료되었습니다! 결과를 확인하세요!");
       }
     } catch (error) {
       console.error("테스트 전송 실패 : ", error);
