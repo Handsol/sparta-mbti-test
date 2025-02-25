@@ -18,8 +18,6 @@ export const login = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/login`, userData);
 
-    console.log(response.data);
-
     // 로그인 시 정보를 zustand에 전송
     if (response.data.accessToken) {
       useAuthStore
@@ -47,7 +45,6 @@ export const logout = () => {
 
 // 프로필 수정 로직
 export const updateProfile = async (formData) => {
-  console.log(formData);
   const accessToken = localStorage.getItem("accessToken");
 
   if (accessToken) {
@@ -64,5 +61,3 @@ export const updateProfile = async (formData) => {
     }
   }
 };
-
-console.log(useAuthStore.getState());
