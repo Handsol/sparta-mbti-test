@@ -22,7 +22,7 @@ const Header = () => {
           // 로그인 상태일 때는 로그아웃 버튼
           <button
             onClick={logOutHandler}
-            className="bg-blue-200 text-blue-800 py-2 px-6 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="bg-blue-200 text-blue-800 py-1 px-3 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Log out
           </button>
@@ -30,7 +30,7 @@ const Header = () => {
           // 로그인 상태가 아닐 때는 로그인 버튼
           <button
             onClick={() => navigate("/login")}
-            className="bg-blue-200 text-blue-800 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="bg-blue-200 text-blue-800 py-1 px-3 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Log in
           </button>
