@@ -10,9 +10,9 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col justify-between items-center h-[150px] w-full max-w-[800px] min-w-[250px] mx-auto bg-blue-100 rounded-lg">
+    <header className="flex flex-col justify-between items-center h-[130px] w-full max-w-[800px] min-w-[250px] mx-auto bg-blue-300 rounded-lg">
       <h1
-        className="text-4xl font-bold text-blue-800 pt-4 cursor-pointer mb-6"
+        className="text-4xl font-bold text-white pt-4 cursor-pointer mb-4"
         onClick={() => navigate("/")}
       >
         MBTI 테스트
@@ -30,7 +30,7 @@ const Header = () => {
           // 로그인 상태가 아닐 때는 로그인 버튼
           <button
             onClick={() => navigate("/login")}
-            className="bg-blue-200 text-blue-800 py-2 px-6 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="bg-blue-200 text-blue-800 rounded-lg hover:bg-blue-300 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Log in
           </button>
