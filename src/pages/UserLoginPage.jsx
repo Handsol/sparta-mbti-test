@@ -29,7 +29,6 @@ const LoginPage = () => {
         <h1 className="text-3xl font-bold text-blue-800 mb-6">Log in</h1>
 
         <form onSubmit={logInHandler} className="space-y-4">
-          {/* 아이디 입력 */}
           <input
             type="text"
             name="id"
@@ -39,7 +38,6 @@ const LoginPage = () => {
             className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
-          {/* 비밀번호 입력 */}
           <input
             type="password"
             name="password"
@@ -49,12 +47,18 @@ const LoginPage = () => {
             className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
-          {/* 로그인 버튼 */}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+            className="w-full py-1 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
           >
             Log in
+          </button>
+          <p> 가입된 계정이 없다면? </p>
+          <button
+            onClick={() => navigate("/signup")}
+            className="w-full py-1 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+          >
+            Sign up here
           </button>
         </form>
       </div>
