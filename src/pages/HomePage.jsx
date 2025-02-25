@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Dashboard from "../components/layout/Dashboard";
-import Header from "../components/layout/header";
+import Header from "../components/layout/LayoutHeader";
 
 const HomePage = () => {
   return (
