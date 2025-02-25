@@ -10,19 +10,19 @@ const Dashboard = ({ children }) => {
       <div className="flex justify-between items-center h-[50px] w-full max-w-[500px] min-w-[150px] text-lg font-medium pb-2 pt-2 gap-10">
         <button
           onClick={() => navigate("/test")}
-          className="bg-blue-200 text-blue-800 py-2 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
+          className="bg-blue-200 text-blue-800 py-1 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
         >
           MBTI Test
         </button>
         <button
           onClick={() => navigate("/result")}
-          className="bg-blue-200 text-blue-800 py-2 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
+          className="bg-blue-200 text-blue-800 py-1 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
         >
           My Result
         </button>
         <button
           onClick={() => navigate("/profile")}
-          className="bg-blue-200 text-blue-800 py-2 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
+          className="bg-blue-200 text-blue-800 py-1 px-4 rounded-lg border border-blue-300 hover:bg-blue-300"
         >
           My Profile
         </button>
