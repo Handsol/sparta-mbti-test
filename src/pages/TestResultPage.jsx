@@ -47,20 +47,27 @@ const TestResultPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-white">
-      <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full overflow-auto">
-        <h1 className="text-3xl font-bold text-primary-color mb-6">
-          MBTI 결과
-        </h1>
+    <div className="w-full flex flex-col items-center justify-center bg-blue-50">
+      <div className="bg-white rounded-lg p-8 max-w-lg w-full h-full border border-blue-200 shadow-md overflow-y-auto scrollbar-hidden">
+        <h1 className="text-3xl font-bold text-blue-800 mb-6">MBTI 결과</h1>
+
         {result ? (
-          <div className="mb-4">
-            <h2 className="text-xl font-bold">결과: {result.result}</h2>
-            <p className="mt-2">{description}</p>
+          <div className="mb-4 text-center">
+            <h2 className="text-xl font-bold text-blue-800">
+              결과: {result.result}
+            </h2>
+            <p className="mt-2 text-gray-700">{description}</p>
           </div>
         ) : (
-          <p>테스트를 진행해주세요!</p>
+          <p className="text-gray-700">테스트를 진행해주세요!</p>
         )}
-        <button onClick={handleRetryTest}>다시 테스트하기</button>
+
+        <button
+          onClick={handleRetryTest}
+          className="w-full py-1 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md mt-4"
+        >
+          다시 테스트하기
+        </button>
       </div>
     </div>
   );
