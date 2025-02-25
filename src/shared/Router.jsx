@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import TestPage from "../pages/TestPage";
 import MainPage from "../pages/MainPage";
-import LogInPage from "../pages/LoginPage";
+import LogInPage from "../pages/UserLoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ProfilePage from "../pages/ProfilePage";
