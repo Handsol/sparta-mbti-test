@@ -24,25 +24,40 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={logInHandler}>
-        <input
-          type="text"
-          name="id"
-          placeholder="Insert Your ID"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Insert Your PW"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log in</button>
-      </form>
+    <div className="h-[650px] w-full max-w-[700px] min-w-[244px] flex flex-col items-center justify-center bg-white">
+      <div className="bg-blue-50 rounded-lg p-6 shadow-md w-[90%] max-w-[500px] text-center border border-blue-200">
+        <h1 className="text-3xl font-bold text-blue-800 mb-6">Log in</h1>
+
+        <form onSubmit={logInHandler} className="space-y-4">
+          {/* 아이디 입력 */}
+          <input
+            type="text"
+            name="id"
+            placeholder="Insert Your ID"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          {/* 비밀번호 입력 */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Insert Your PW"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          {/* 로그인 버튼 */}
+          <button
+            type="submit"
+            className="w-full py-3 bg-blue-200 text-blue-800 font-semibold rounded-md border border-blue-300 hover:bg-blue-300 transition duration-300 shadow-sm hover:shadow-md"
+          >
+            Log in
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
